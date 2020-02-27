@@ -4,7 +4,7 @@
 
 
   tower_project:
-    name: "{{proj_name}}"
+    name: "Homework Assignment - Porfirio Marco Tulio Agustin Chavez"
     description: "{{proj_description}}"
     organization: "{{org_name}}"
     state: present
