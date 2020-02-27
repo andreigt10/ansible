@@ -19,6 +19,11 @@
   - name: List key files
     shell: (cd /root/.ssh; find . -maxdepth 1 -type f -iname '*key.pem')| cut -d'/' -f2
     register: file_to_copy
+  - name: get Key
+    slurp:
+      src: /root/.ssh/{{ file_to_copy.stdout }}
+    register: keyfile 
+  
   - name: Tower Creds key file
     tower_credential:
       name: Creds for AWS instances
@@ -42,7 +47,7 @@
       state: present
       job_type: run
       playbook: aws-site-3tier-app.yml
-      project: "Homework Assignment"
+      project: "Homework Assignment - Porfirio Marco Tulio Agustin Chavez"
   - name: Update Prod Smoke Job template
     tower_job_template:
       name: "Smoke test Prod env"
@@ -54,6 +59,18 @@
       state: present
       job_type: run
       playbook: site-smoketest-aws.yml
-      project: "Homework Assignment"
+      project: "Homework Assignment - Porfirio Marco Tulio Agustin Chavez"
+  - name: Update Check the status of AWS instances
+    tower_job_template:
+      name: "Check the status of AWS instances"
+      credential: "Creds for AWS instances"
+      tower_host: tower1.{{tower_guid}}.example.opentlc.com
+      tower_username: admin
+      tower_password: r3dh4t1!
+      tower_verify_ssl: no
+      state: present
+      job_type: run
+      playbook: aws_status_check.yml
+      project: "Homework Assignment - Porfirio Marco Tulio Agustin Chavez"
 
     
