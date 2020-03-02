@@ -1,7 +1,5 @@
 ---
 - name: Create Homework Assignment - Porfirio Marco Tulio Agustin Chavez
-  # Use tower module or tower-cli to create Ansible Tower project. Name of the project is specifed in ./vars/main.yml
-
   tower_project:
     name: "{{proj_name}}"
     description: "{{proj_description}}"
@@ -28,7 +26,6 @@
     become_method: "sudo"
     ssh_key_data: "{{ lookup('file', '/root/.ssh/openstack.pem') }}"
     username: "cloud-user"
-
 
 - name: Create Inventory
   command: |
