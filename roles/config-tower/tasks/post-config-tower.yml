@@ -1,10 +1,9 @@
-# name: Create Homework Assignment project 
-# Use tower module or tower-cli to create Ansible Tower project. Name of the project is specifed in ./vars/main.yml
-# @author: Porfirio Marco Tulio Agustin Chavez
-
+---
+- name: Create Homework Assignment project Porfirio Agustin
+  # Use tower module or tower-cli to create Ansible Tower project. Name of the project is specifed in ./vars/main.yml
 
   tower_project:
-    name: "Homework Assignment - Porfirio Marco Tulio Agustin Chavez"
+    name: "{{proj_name}}"
     description: "{{proj_description}}"
     organization: "{{org_name}}"
     state: present
@@ -12,6 +11,10 @@
     scm_url: https://github.com/elmaco1979/ansible_advance_homework
     scm_update_on_launch: yes
     scm_branch: master
+    #scm_credential: "/root/ansible_advance_homework/gitpass.yml"
+    #scm_credential: git_key
+
+
 
 - name: Machine Credential to connect to workstation using openstack.pub
   tower_credential:
