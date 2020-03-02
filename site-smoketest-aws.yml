@@ -10,7 +10,7 @@
       - osp.smoke
   - name: Use Uri module for wrting smoke test.
     uri:
-     url: "http://{{item.public_v4}}"
+     url: http://localhost/index.html
      return_content: yes
     with_items:
       - "{{ openstack_info.ansible_facts.openstack_servers }}"
