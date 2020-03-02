@@ -2,7 +2,7 @@
 - name: Create Homework Assignment - Porfirio Marco Tulio Agustin Chavez
   tower_project:
     name: "{{proj_name}}"
-    description: "{{proj_description}}"
+    #description: "{{proj_description}}"
     organization: "{{org_name}}"
     state: present
     scm_type: git
